@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KARA Dashboard | Melody's Projects</title>
+  <meta name="description" content="Project command center for Melody - powered by KARA">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <span class="logo-icon">🚀</span>
+        <div class="logo-text">
+          <h1>KARA Dashboard</h1>
+          <p class="tagline">Melody's Project Command Center</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input type="text" id="search" placeholder="Search projects..." />
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="paused">Paused</button>
+        </div>
+      </div>
+      <div class="header-stats">
+        <div class="stat">
+          <span class="stat-value" id="active-count">-</span>
+          <span class="stat-label">Active</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="paused-count">-</span>
+          <span class="stat-label">Paused</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="tasks-count">-</span>
+          <span class="stat-label">Tasks</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <button class="quick-btn" id="refresh-btn">
+        <span class="quick-icon">🔄</span>
+        <span>Refresh</span>
+      </button>
+      <button class="quick-btn" onclick="window.open('https://github.com/mykarabot-git/kara-workspace', '_blank')">
+        <span class="quick-icon">📂</span>
+        <span>GitHub</span>
+      </button>
+      <button class="quick-btn" id="toggle-tasks-btn">
+        <span class="quick-icon">✅</span>
+        <span>Show Tasks</span>
+      </button>
+      <div class="last-refresh">
+        <span id="refresh-status">Loading...</span>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Projects Grid -->
+      <section class="projects-section" id="projects-section">
+        <h2 class="section-title">
+          <span class="section-icon">⚡</span>
+          <span>Projects</span>
+          <span class="project-count" id="visible-count"></span>
+        </h2>
+        <div class="projects-grid" id="projects-grid">
+          <!-- Projects loaded dynamically -->
+        </div>
+      </section>
+
+      <!-- Activity Feed -->
+      <section class="activity-section">
+        <h2 class="section-title">
+          <span class="section-icon">📋</span>
+          Recent Activity
+        </h2>
+        <div class="activity-feed" id="activity-feed">
+          <!-- Activity loaded dynamically -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>Built with 💜 by KARA for Melody</p>
+      <p class="footer-sub">Auto-refreshes every 30 seconds • <span id="last-updated">-</span></p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
