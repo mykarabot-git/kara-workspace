@@ -2,6 +2,13 @@
 
 Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
 
+## Browser Access
+
+I have browser control via the `browser` tool. I can:
+- Open URLs, navigate, take snapshots
+- Click, type, interact with web pages
+- Use profile "openclaw" for the isolated browser
+
 ## What Goes Here
 
 Things like:
