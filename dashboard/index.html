@@ -12,96 +12,129 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <div class="logo">
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
         <span class="logo-icon">🚀</span>
-        <div class="logo-text">
-          <h1>KARA Dashboard</h1>
-          <p class="tagline">Melody's Project Command Center</p>
-        </div>
+        <span class="logo-text">KARA</span>
       </div>
-      <div class="header-actions">
-        <div class="search-box">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.35-4.35"></path>
-          </svg>
-          <input type="text" id="search" placeholder="Search projects..." />
-        </div>
-        <div class="filter-buttons">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="active">Active</button>
-          <button class="filter-btn" data-filter="paused">Paused</button>
-        </div>
-      </div>
-      <div class="header-stats">
-        <div class="stat">
-          <span class="stat-value" id="active-count">-</span>
-          <span class="stat-label">Active</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value" id="paused-count">-</span>
-          <span class="stat-label">Paused</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value" id="tasks-count">-</span>
-          <span class="stat-label">Tasks</span>
-        </div>
-      </div>
-    </header>
+      
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="projects">
+          <span class="nav-icon">⚡</span>
+          <span>Projects</span>
+        </button>
+        <button class="nav-item" data-view="social">
+          <span class="nav-icon">📱</span>
+          <span>Social Queue</span>
+        </button>
+        <button class="nav-item" data-view="system">
+          <span class="nav-icon">🖥️</span>
+          <span>System Health</span>
+        </button>
+      </nav>
 
-    <!-- Quick Actions -->
-    <section class="quick-actions">
-      <button class="quick-btn" id="refresh-btn">
-        <span class="quick-icon">🔄</span>
-        <span>Refresh</span>
-      </button>
-      <button class="quick-btn" onclick="window.open('https://github.com/mykarabot-git/kara-workspace', '_blank')">
-        <span class="quick-icon">📂</span>
-        <span>GitHub</span>
-      </button>
-      <button class="quick-btn" id="toggle-tasks-btn">
-        <span class="quick-icon">✅</span>
-        <span>Show Tasks</span>
-      </button>
-      <div class="last-refresh">
-        <span id="refresh-status">Loading...</span>
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text" id="system-status">Online</span>
+        </div>
       </div>
-    </section>
+    </aside>
 
     <!-- Main Content -->
-    <main>
-      <!-- Projects Grid -->
-      <section class="projects-section" id="projects-section">
-        <h2 class="section-title">
-          <span class="section-icon">⚡</span>
-          <span>Projects</span>
-          <span class="project-count" id="visible-count"></span>
-        </h2>
-        <div class="projects-grid" id="projects-grid">
-          <!-- Projects loaded dynamically -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header>
+        <div class="header-left">
+          <h1 id="page-title">Project Command Center</h1>
+          <p class="tagline" id="page-subtitle">Melody's Operations Hub</p>
         </div>
-      </section>
-
-      <!-- Activity Feed -->
-      <section class="activity-section">
-        <h2 class="section-title">
-          <span class="section-icon">📋</span>
-          Recent Activity
-        </h2>
-        <div class="activity-feed" id="activity-feed">
-          <!-- Activity loaded dynamically -->
+        <div class="header-actions">
+          <div class="search-box" id="search-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" id="search" placeholder="Search projects..." />
+          </div>
+          <button class="action-btn" id="refresh-btn" title="Refresh Data">
+            <span class="btn-icon">🔄</span>
+          </button>
+          <button class="action-btn" onclick="window.open('https://github.com/mykarabot-git/kara-workspace', '_blank')" title="Open GitHub">
+            <span class="btn-icon">📂</span>
+          </button>
         </div>
-      </section>
-    </main>
+      </header>
 
-    <!-- Footer -->
-    <footer>
-      <p>Built with 💜 by KARA for Melody</p>
-      <p class="footer-sub">Auto-refreshes every 30 seconds • <span id="last-updated">-</span></p>
-    </footer>
+      <!-- Views -->
+      <main id="main-content">
+        
+        <!-- Projects View -->
+        <div class="view active" id="view-projects">
+          <!-- Stats Bar -->
+          <div class="stats-bar">
+            <div class="stat-card">
+              <span class="stat-value" id="active-count">-</span>
+              <span class="stat-label">Active Projects</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="tasks-count">-</span>
+              <span class="stat-label">Open Tasks</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="next-drop">-</span>
+              <span class="stat-label">Next Drop</span>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <!-- Projects List -->
+            <section class="projects-section">
+              <div class="section-header">
+                <h2>Active Projects</h2>
+                <div class="filter-buttons">
+                  <button class="filter-btn active" data-filter="all">All</button>
+                  <button class="filter-btn" data-filter="active">Active</button>
+                  <button class="filter-btn" data-filter="paused">Paused</button>
+                </div>
+              </div>
+              <div class="projects-grid" id="projects-grid">
+                <!-- Loaded dynamically -->
+              </div>
+            </section>
+
+            <!-- Activity Feed (Side) -->
+            <aside class="activity-sidebar">
+              <h2 class="section-title">Recent Activity</h2>
+              <div class="activity-feed" id="activity-feed">
+                <!-- Loaded dynamically -->
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <!-- Social View -->
+        <div class="view" id="view-social">
+          <div class="empty-state">
+            <span class="empty-icon">📱</span>
+            <h3>Social Dashboard</h3>
+            <p>Postiz integration coming soon...</p>
+          </div>
+        </div>
+
+        <!-- System View -->
+        <div class="view" id="view-system">
+          <div class="empty-state">
+            <span class="empty-icon">🖥️</span>
+            <h3>System Health</h3>
+            <p>Real-time metrics loading...</p>
+          </div>
+        </div>
+
+      </main>
+    </div>
   </div>
 
   <!-- Toast Notification -->

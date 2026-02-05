@@ -1,8 +1,8 @@
 // KARA Dashboard - App Logic
 // Auto-refreshes from data.json
 
-let projectsData = null;
-let showTasks = false;
+let dashboardData = null;
+let currentView = 'projects';
 let currentFilter = 'all';
 let searchQuery = '';
 
@@ -19,17 +19,41 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadData() {
   try {
     const response = await fetch('data.json?t=' + Date.now());
-    projectsData = await response.json();
+    dashboardData = await response.json();
     render();
-    showToast('Dashboard updated');
+    
+    // Update system status indicator
+    const statusText = document.getElementById('system-status');
+    if (statusText) statusText.textContent = "Online";
+    document.querySelector('.status-dot').style.background = 'var(--accent-green)';
+    document.querySelector('.status-dot').style.boxShadow = '0 0 8px var(--accent-green)';
+
   } catch (error) {
     console.error('Failed to load data:', error);
-    showToast('Failed to refresh', 'error');
+    const statusText = document.getElementById('system-status');
+    if (statusText) statusText.textContent = "Offline";
+    document.querySelector('.status-dot').style.background = 'var(--accent-orange)';
+    document.querySelector('.status-dot').style.boxShadow = 'none';
+    
+    showToast('Connection lost', 'error');
   }
 }
 
 // Setup event listeners
 function setupEventListeners() {
+  // Navigation
+  document.querySelectorAll('.nav-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active nav state
+      document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Switch view
+      const viewId = btn.dataset.view;
+      switchView(viewId);
+    });
+  });
+
   // Search
   document.getElementById('search').addEventListener('input', (e) => {
     searchQuery = e.target.value.toLowerCase();
@@ -48,43 +72,69 @@ function setupEventListeners() {
 
   // Refresh button
   document.getElementById('refresh-btn').addEventListener('click', () => {
+    const btn = document.getElementById('refresh-btn');
+    btn.style.transform = 'rotate(180deg)';
+    setTimeout(() => btn.style.transform = 'none', 500);
     loadData();
+    showToast('Refreshing data...');
   });
+}
 
-  // Toggle tasks button
-  document.getElementById('toggle-tasks-btn').addEventListener('click', () => {
-    showTasks = !showTasks;
-    document.getElementById('toggle-tasks-btn').querySelector('span:last-child').textContent = 
-      showTasks ? 'Hide Tasks' : 'Show Tasks';
-    renderProjects();
-  });
+// Switch main view
+function switchView(viewName) {
+  currentView = viewName;
+  
+  // Hide all views
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  
+  // Show target view
+  const target = document.getElementById(`view-${viewName}`);
+  if (target) {
+    target.classList.add('active');
+    
+    // Update header title based on view
+    const titles = {
+      projects: "Project Command Center",
+      social: "Social Media HQ",
+      system: "System Diagnostics"
+    };
+    document.getElementById('page-title').textContent = titles[viewName] || "Dashboard";
+  }
 }
 
 // Main render function
 function render() {
-  renderStats();
-  renderProjects();
-  renderActivity();
-  updateRefreshStatus();
+  if (!dashboardData) return;
+
+  if (currentView === 'projects') {
+    renderStats();
+    renderProjects();
+    renderActivity();
+  }
+  
+  // Future: renderSocial() and renderSystem()
 }
 
-// Render stats
+// Render top stats
 function renderStats() {
-  const stats = projectsData.stats;
+  const stats = dashboardData.stats;
   document.getElementById('active-count').textContent = stats.active;
-  document.getElementById('paused-count').textContent = stats.paused;
   
   // Count total open tasks
-  const totalTasks = projectsData.projects.reduce((sum, p) => 
-    sum + p.tasks.filter(t => !t.done).length, 0);
+  const totalTasks = dashboardData.projects.reduce((sum, p) => 
+    sum + (p.tasks ? p.tasks.filter(t => !t.done).length : 0), 0);
   document.getElementById('tasks-count').textContent = totalTasks;
+  
+  // Next drop (placeholder logic for now)
+  document.getElementById('next-drop').textContent = "Feb 10"; 
 }
 
-// Render projects
+// Render projects list
 function renderProjects() {
   const grid = document.getElementById('projects-grid');
+  if (!grid) return;
   
-  let filtered = projectsData.projects.filter(p => {
+  let filtered = dashboardData.projects.filter(p => {
     // Filter by status
     if (currentFilter === 'active' && (p.status === 'paused')) return false;
     if (currentFilter === 'paused' && (p.status !== 'paused')) return false;
@@ -109,57 +159,30 @@ function renderProjects() {
     return priorityOrder[a.priority] - priorityOrder[b.priority];
   });
 
-  document.getElementById('visible-count').textContent = `(${filtered.length})`;
-
   grid.innerHTML = filtered.map(project => createProjectCard(project)).join('');
 }
 
 // Create project card HTML
 function createProjectCard(project) {
   const isPaused = project.status === 'paused';
-  const statusClass = project.status === 'planning' ? 'planning' : 
-                      project.status === 'paused' ? 'paused' : 'active';
+  const statusClass = project.status;
+  const priorityClass = project.priority;
+
+  const openTasks = project.tasks ? project.tasks.filter(t => !t.done) : [];
   
-  const priorityClass = project.priority === 'high' ? '' : 
-                        project.priority === 'medium' ? 'medium' : 'low';
-
-  const openTasks = project.tasks.filter(t => !t.done);
-  const completedTasks = project.tasks.filter(t => t.done);
-
-  let tasksHtml = '';
-  if (showTasks && project.tasks.length > 0) {
-    tasksHtml = `
-      <div class="task-list">
-        <div class="task-header">
-          <span>Tasks</span>
-          <span class="task-count">${completedTasks.length}/${project.tasks.length}</span>
-        </div>
-        ${project.tasks.map(task => `
-          <div class="task-item ${task.done ? 'done' : ''}">
-            <span class="task-checkbox">${task.done ? '✓' : '○'}</span>
-            <span class="task-text">${task.text}</span>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  let linksHtml = '';
-  if (project.links.length > 0) {
-    linksHtml = project.links.map(link => `
-      <div class="meta-item">
-        <span class="meta-icon">🔗</span>
-        <a href="${link.url}" target="_blank" rel="noopener">${link.label}</a>
-      </div>
-    `).join('');
-  }
+  // Generate task list HTML (limit to 3)
+  const taskListHtml = openTasks.slice(0, 3).map(task => `
+    <div class="task-item">
+      <span class="task-checkbox">○</span>
+      <span class="task-text">${task.text}</span>
+    </div>
+  `).join('');
 
   return `
-    <article class="project-card ${isPaused ? 'paused' : ''}" data-id="${project.id}">
+    <article class="project-card ${isPaused ? 'paused' : ''}">
       <div class="card-header">
         <span class="status-badge ${statusClass}">${capitalize(project.status)}</span>
         ${!isPaused ? `<span class="priority-badge ${priorityClass}">${capitalize(project.priority)}</span>` : ''}
-        ${openTasks.length > 0 ? `<span class="task-badge">${openTasks.length} task${openTasks.length > 1 ? 's' : ''}</span>` : ''}
       </div>
       
       <h3 class="project-title">${project.name}</h3>
@@ -171,27 +194,15 @@ function createProjectCard(project) {
             <span class="meta-icon">🎯</span>
             <span>${project.nextAction}</span>
           </div>
-          ${linksHtml}
         </div>
       ` : ''}
       
-      ${project.waitingOn ? `
-        <div class="waiting-on">
-          <span class="waiting-icon">⏳</span>
-          <span>Waiting on: ${project.waitingOn}</span>
+      ${!isPaused && openTasks.length > 0 ? `
+        <div class="task-list">
+          ${taskListHtml}
+          ${openTasks.length > 3 ? `<div class="task-item"><span class="task-text" style="color:var(--text-muted)">+ ${openTasks.length - 3} more...</span></div>` : ''}
         </div>
       ` : ''}
-      
-      ${!isPaused ? `
-        <div class="progress-container">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: ${project.progress}%"></div>
-          </div>
-          <span class="progress-label">${project.progress}% complete</span>
-        </div>
-      ` : ''}
-      
-      ${tasksHtml}
     </article>
   `;
 }
@@ -199,53 +210,23 @@ function createProjectCard(project) {
 // Render activity feed
 function renderActivity() {
   const feed = document.getElementById('activity-feed');
+  if (!feed) return;
   
-  feed.innerHTML = projectsData.activity.map(item => `
+  feed.innerHTML = dashboardData.activity.map(item => `
     <div class="activity-item">
-      <div class="activity-date">${formatDate(item.date)}</div>
-      <div class="activity-content">
-        <span class="activity-icon">${item.icon}</span>
-        <span>${item.text}</span>
+      <div class="activity-icon">${item.icon}</div>
+      <div class="activity-details">
+        <div class="activity-content">${item.text}</div>
+        <div class="activity-date">${item.date}</div>
       </div>
     </div>
   `).join('');
 }
 
-// Update refresh status
-function updateRefreshStatus() {
-  const lastUpdated = new Date(projectsData.lastUpdated);
-  document.getElementById('last-updated').textContent = 
-    `Last updated: ${lastUpdated.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    })}`;
-  
-  document.getElementById('refresh-status').textContent = 
-    `Updated ${getTimeAgo(new Date())}`;
-}
-
 // Helper: Capitalize
 function capitalize(str) {
+  if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-// Helper: Format date
-function formatDate(dateStr) {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
-
-// Helper: Time ago
-function getTimeAgo(date) {
-  const seconds = Math.floor((new Date() - date) / 1000);
-  if (seconds < 60) return 'just now';
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}m ago`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours}h ago`;
-  return `${Math.floor(hours / 24)}d ago`;
 }
 
 // Show toast notification
@@ -258,24 +239,3 @@ function showToast(message, type = 'success') {
     toast.className = 'toast';
   }, 2000);
 }
-
-// Keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-  // Cmd/Ctrl + K to focus search
-  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-    e.preventDefault();
-    document.getElementById('search').focus();
-  }
-  
-  // Escape to clear search
-  if (e.key === 'Escape') {
-    document.getElementById('search').value = '';
-    searchQuery = '';
-    renderProjects();
-  }
-  
-  // R to refresh
-  if (e.key === 'r' && !e.metaKey && !e.ctrlKey && document.activeElement.tagName !== 'INPUT') {
-    loadData();
-  }
-});
