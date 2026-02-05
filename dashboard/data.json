@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-05T18:50:29.876Z",
+  "lastUpdated": "2026-02-05T20:39:55.122Z",
   "stats": {
     "active": 3,
     "paused": 3,
@@ -16,8 +16,14 @@
       "description": "Content platform showcasing productivity tips, AI explainers, and tech tutorials. KARA's demo project.",
       "nextAction": "Build content strategy",
       "history": [
-        {"date": "2026-02-05", "text": "Generated 3 automated content cards (ChatGPT, Gamma, Goblin Tools)"},
-        {"date": "2026-02-04", "text": "Project initialized"}
+        {
+          "date": "2026-02-05",
+          "text": "Generated 3 automated content cards (ChatGPT, Gamma, Goblin Tools)"
+        },
+        {
+          "date": "2026-02-04",
+          "text": "Project initialized"
+        }
       ],
       "ideas": [
         "Series: 'AI Tools for Students'",
@@ -240,5 +246,15 @@
       "icon": "🎉",
       "text": "KARA came online — named after Kara Thrace"
     }
-  ]
+  ],
+  "system": {
+    "memory": {
+      "used": "4.9 GB",
+      "total": "7.3 GB",
+      "percent": 67
+    },
+    "uptime": "1d 3h",
+    "platform": "Linux 6.17.0-12-generic",
+    "cpu": "12th Gen Intel(R) Core(TM) i9-12900KF"
+  }
 }
