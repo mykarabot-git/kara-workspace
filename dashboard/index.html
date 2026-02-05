@@ -33,6 +33,10 @@
           <span class="nav-icon">📱</span>
           <span>Social Queue</span>
         </button>
+        <button class="nav-item" data-view="ideas">
+          <span class="nav-icon">💡</span>
+          <span>Ideas Lab</span>
+        </button>
         <button class="nav-item" data-view="system">
           <span class="nav-icon">🖥️</span>
           <span>System Health</span>
@@ -137,6 +141,21 @@
             <span class="empty-icon">📱</span>
             <h3>Social Dashboard</h3>
             <p>Postiz integration coming soon...</p>
+          </div>
+        </div>
+
+        <!-- Ideas Lab View -->
+        <div class="view" id="view-ideas">
+          <div class="content-grid" style="grid-template-columns: 1fr;">
+            <section class="projects-section">
+              <div class="section-header">
+                <h2>Potential Ventures & Expansions</h2>
+                <button class="filter-btn active" id="add-idea-btn">+ New Idea</button>
+              </div>
+              <div class="projects-grid" id="ideas-grid">
+                <!-- Loaded dynamically -->
+              </div>
+            </section>
           </div>
         </div>
 

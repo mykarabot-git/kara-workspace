@@ -126,6 +126,7 @@ function switchView(viewName) {
       projects: "Project Command Center",
       content: "Content Gallery",
       social: "Social Media HQ",
+      ideas: "Ideas Lab & R&D",
       system: "System Diagnostics"
     };
     const titleEl = document.getElementById('page-title');
@@ -133,6 +134,7 @@ function switchView(viewName) {
     
     if (viewName === 'system') renderSystem();
     if (viewName === 'content') renderContent();
+    if (viewName === 'ideas') renderIdeas();
   }
 }
 
@@ -148,7 +150,48 @@ function render() {
     renderSystem();
   } else if (currentView === 'content') {
     renderContent();
+  } else if (currentView === 'ideas') {
+    renderIdeas();
   }
+}
+
+// Render Ideas Lab
+function renderIdeas() {
+  const grid = document.getElementById('ideas-grid');
+  if (!grid) return;
+
+  // Placeholder ideas - normally this would come from data.json
+  const ideas = [
+    {
+      title: "AI Newsletter Aggregator",
+      desc: "Auto-curate top AI news daily into a 2-minute read. Monetize via sponsorship/subs.",
+      tag: "SaaS / Media",
+      status: "Concept"
+    },
+    {
+      title: "Print-on-Demand Automation",
+      desc: "Use Midjourney API + Printful to auto-generate and list trending t-shirt designs.",
+      tag: "E-commerce",
+      status: "Researching"
+    },
+    {
+      title: "Local Biz AI Audit Service",
+      desc: "Productized service auditing local businesses' websites/SEO using agents.",
+      tag: "Service",
+      status: "Concept"
+    }
+  ];
+
+  grid.innerHTML = ideas.map(idea => `
+    <article class="project-card">
+      <div class="card-header">
+        <span class="status-badge planning">${idea.status}</span>
+        <span class="priority-badge low">${idea.tag}</span>
+      </div>
+      <h3 class="project-title">${idea.title}</h3>
+      <p class="project-desc">${idea.desc}</p>
+    </article>
+  `).join('');
 }
 
 // Render top stats
