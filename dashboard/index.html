@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 <body>
   <div class="app-layout">
@@ -24,6 +24,10 @@
         <button class="nav-item active" data-view="projects">
           <span class="nav-icon">⚡</span>
           <span>Projects</span>
+        </button>
+        <button class="nav-item" data-view="content">
+          <span class="nav-icon">🎨</span>
+          <span>Content Gallery</span>
         </button>
         <button class="nav-item" data-view="social">
           <span class="nav-icon">📱</span>
@@ -112,6 +116,18 @@
                 <!-- Loaded dynamically -->
               </div>
             </aside>
+          </div>
+        </div>
+
+        <!-- Content View -->
+        <div class="view" id="view-content">
+          <div class="content-grid" style="grid-template-columns: 1fr;">
+            <section class="projects-section">
+              <div class="section-header"><h2>Generated Content</h2></div>
+              <div class="projects-grid" id="content-grid">
+                <!-- Loaded dynamically -->
+              </div>
+            </section>
           </div>
         </div>
 

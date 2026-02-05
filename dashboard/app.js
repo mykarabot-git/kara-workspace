@@ -124,6 +124,7 @@ function switchView(viewName) {
     // Update header title based on view
     const titles = {
       projects: "Project Command Center",
+      content: "Content Gallery",
       social: "Social Media HQ",
       system: "System Diagnostics"
     };
@@ -131,6 +132,7 @@ function switchView(viewName) {
     if (titleEl) titleEl.textContent = titles[viewName] || "Dashboard";
     
     if (viewName === 'system') renderSystem();
+    if (viewName === 'content') renderContent();
   }
 }
 
@@ -144,6 +146,8 @@ function render() {
     renderActivity();
   } else if (currentView === 'system') {
     renderSystem();
+  } else if (currentView === 'content') {
+    renderContent();
   }
 }
 
@@ -309,6 +313,32 @@ function renderSystem() {
       </section>
     </div>
   `;
+}
+
+// Render Content Gallery
+function renderContent() {
+  const grid = document.getElementById('content-grid');
+  if (!grid) return;
+
+  const contentItems = [
+    { type: 'video', src: '../content/video-gamma.mp4', title: 'Stop Making Slides Manually' },
+    { type: 'image', src: '../content/post-001-chatgpt.jpg', title: 'ChatGPT Tips' }
+  ];
+
+  grid.innerHTML = contentItems.map(item => `
+    <article class="project-card">
+      <h3 class="project-title">${item.title}</h3>
+      <div style="margin-top:1rem; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+        ${item.type === 'video' 
+          ? `<video src="${item.src}" controls style="width:100%; display:block; background:#000;"></video>`
+          : `<img src="${item.src}" style="width:100%; display:block;">`
+        }
+      </div>
+      <div style="margin-top:1rem; display:flex; justify-content:flex-end;">
+        <a href="${item.src}" download target="_blank" class="filter-btn active" style="text-decoration:none;">⬇️ Download</a>
+      </div>
+    </article>
+  `).join('');
 }
 
 // Helper: Capitalize
