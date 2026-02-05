@@ -60,7 +60,7 @@
         {"id": 1, "text": "Create project files", "done": true},
         {"id": 2, "text": "Set up GitHub repo", "done": true},
         {"id": 3, "text": "Build web dashboard", "done": true},
-        {"id": 4, "text": "Deploy to GitHub Pages", "done": false},
+        {"id": 4, "text": "Deploy to GitHub Pages", "done": true},
         {"id": 5, "text": "Add task management", "done": true}
       ],
       "waitingOn": null
