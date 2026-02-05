@@ -124,7 +124,6 @@ function switchView(viewName) {
     // Update header title based on view
     const titles = {
       projects: "Project Command Center",
-      nexus: "Dreamwav NEXUS",
       content: "Content Gallery",
       social: "Social Media HQ",
       ideas: "Ideas Lab & R&D",
@@ -136,7 +135,6 @@ function switchView(viewName) {
     if (viewName === 'system') renderSystem();
     if (viewName === 'content') renderContent();
     if (viewName === 'ideas') renderIdeas();
-    if (viewName === 'nexus') renderNexus();
   }
 }
 
@@ -154,54 +152,7 @@ function render() {
     renderContent();
   } else if (currentView === 'ideas') {
     renderIdeas();
-  } else if (currentView === 'nexus') {
-    renderNexus();
   }
-}
-
-// Render NEXUS
-function renderNexus() {
-  const grid = document.getElementById('catalog-grid');
-  if (!grid || !dashboardData.nexus) return;
-
-  // Update Stats
-  const readyCount = dashboardData.nexus.catalog.filter(s => s.pitchReady).length;
-  document.getElementById('pitch-ready-count').textContent = readyCount;
-  document.getElementById('active-pitches').textContent = "0"; // Placeholder
-  document.getElementById('next-cycle').textContent = "Mon 9:00 AM";
-
-  // Render Catalog
-  grid.innerHTML = dashboardData.nexus.catalog.map(song => `
-    <article class="project-card" style="border-left: 4px solid ${song.pitchReady ? 'var(--accent-green)' : 'var(--accent-orange)'}">
-      <div class="card-header">
-        <span class="status-badge ${song.pitchReady ? 'active' : 'paused'}">${song.status}</span>
-        <span class="priority-badge low">${song.bpm} BPM / ${song.key}</span>
-      </div>
-      <h3 class="project-title">${song.title}</h3>
-      <p class="project-desc">${song.artist}</p>
-      
-      <div class="task-list">
-        <div class="task-item">
-          <span class="task-checkbox">${song.splits ? '✓' : '○'}</span>
-          <span class="task-text">Splits Confirmed</span>
-        </div>
-        <div class="task-item">
-          <span class="task-checkbox">${song.metadata ? '✓' : '○'}</span>
-          <span class="task-text">Metadata Complete</span>
-        </div>
-      </div>
-
-      ${song.pitchReady ? `
-        <div style="margin-top:1rem; display:flex; gap:0.5rem;">
-          <button class="filter-btn active" style="flex:1;">Select for Pitch</button>
-        </div>
-      ` : `
-        <div style="margin-top:1rem; color:var(--accent-orange); font-size:0.8rem; font-weight:600;">
-          ⚠️ MISSING CRITERIA
-        </div>
-      `}
-    </article>
-  `).join('');
 }
 
 // Render Ideas Lab

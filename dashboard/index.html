@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2.0">
+  <link rel="stylesheet" href="style.css?v=2.1">
 </head>
 <body>
   <div class="app-layout">
@@ -24,10 +24,6 @@
         <button class="nav-item active" data-view="projects">
           <span class="nav-icon">⚡</span>
           <span>Projects</span>
-        </button>
-        <button class="nav-item" data-view="nexus">
-          <span class="nav-icon">💎</span>
-          <span>NEXUS</span>
         </button>
         <button class="nav-item" data-view="content">
           <span class="nav-icon">🎨</span>
@@ -122,55 +118,6 @@
               <h2 class="section-title">Recent Activity</h2>
               <div class="activity-feed" id="activity-feed">
                 <!-- Loaded dynamically -->
-              </div>
-            </aside>
-          </div>
-        </div>
-
-        <!-- NEXUS View -->
-        <div class="view" id="view-nexus">
-          <div class="stats-bar">
-            <div class="stat-card">
-              <span class="stat-value" id="pitch-ready-count">-</span>
-              <span class="stat-label">Pitch Ready Songs</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value" id="active-pitches">-</span>
-              <span class="stat-label">Active Pitches</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value" id="next-cycle">-</span>
-              <span class="stat-label">Next Pitch Cycle</span>
-            </div>
-          </div>
-
-          <div class="content-grid" style="grid-template-columns: 2fr 1fr;">
-            <!-- Catalog -->
-            <section class="projects-section">
-              <div class="section-header">
-                <h2>Dreamwav Catalog</h2>
-                <button class="filter-btn active" onclick="alert('Add Song Modal - Coming Soon')">+ Add Song</button>
-              </div>
-              <div class="projects-grid" id="catalog-grid">
-                <!-- Loaded dynamically -->
-              </div>
-            </section>
-
-            <!-- Quick Tools -->
-            <aside class="activity-sidebar">
-              <h2 class="section-title">Pitch Command</h2>
-              <div class="activity-feed">
-                <button class="quick-btn" style="width:100%; justify-content:center; margin-bottom:1rem;" onclick="alert('Pitch Generator - Coming Soon')">
-                  ✉️ Generate Pitch Email
-                </button>
-                <div class="activity-item">
-                  <div class="activity-content">
-                    <strong>Rules:</strong><br>
-                    • No Metadata = No Pitch<br>
-                    • Tier A: 1-2x/mo<br>
-                    • Tier B: 1x/mo
-                  </div>
-                </div>
               </div>
             </aside>
           </div>

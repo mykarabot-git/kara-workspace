@@ -1,80 +1,29 @@
-# Dreamwav NEXUS
+# Dreamwav NEXUS - Product Requirements
 
-**Status:** ⏸️ Paused  
-**Priority:** —  
-**Owner:** Melody  
-**Depends on:** Dreamwav official start
+**Core Concept:** A high-end, proprietary platform for music pitching and operations.
 
----
+## The Workflow: "Pitch Capsule"
+Instead of sending raw links, we send a curated "Drop" experience.
 
-## Overview
+### 1. Delivery Format
+*   **Preview Reel:** 10-20s video. Kinetic lyrics. Premium visual. (Goal: Stop the scroll).
+*   **Pitch Card:** One-sheet style. Facts only.
+*   **Listening Room:** Private, secure link. Full audio + Instrumentals. Download toggle.
 
-Centralized operations platform for Dreamwav. Brings together contacts, pitching, templates, tracking, and more.
+### 2. Bi-Weekly Pitch Cycle
+*   **Monday:** Intake & Priority. (Genre, BPM, Key, Territory, Artist Target).
+*   **Targeting:** Custom pitch angle. Why this artist? Why now?
+*   **Pitch Day:** Send via Email/DM. Log immediately.
+*   **Reporting:** Weekly report. (Holds, Interest, Passes).
 
-**NEXUS =** "Networked Ecosystem for eXperience, Culture & Unified Systems"
+### 3. Architecture Ideas
+*   **Frontend:** Next.js (React) + Tailwind CSS + Framer Motion (for premium feel).
+*   **Backend:** Supabase (Auth, Database, Realtime).
+*   **Media:** Vercel Blob or AWS S3 for audio/video hosting.
+*   **Video Gen:** Remotion (for generating the Preview Reels programmatically).
 
----
-
-## Taglines
-
-- "One hub. Every workflow."
-- "Manage the work. Track the impact."
-- "Where teams align, and work moves."
-- "Build worlds. Move fast. Stay aligned."
-- "Creative clarity across every division."
-
----
-
-## Core Features
-
-### Contact & Collaboration System
-- Contact rolodex
-- Templates
-- Secure music sharing
-- Per-recipient links
-- Link tracking/insights
-- Channel logging (email/social/text)
-
-### Drop System
-- Multi-track pack/playlist concept
-- Guardrails based on track count
-- "Warn + override" approach
-- Loosen limits after Interested/Hold status
-
----
-
-## Research Needed
-
-| Platform | Purpose |
-|----------|---------|
-| Samply | Secure sharing, collaboration |
-| [untitled] | Delivery, catalog management |
-| DISCO | Pitching workflows |
-
-**Key question:** Build vs. integrate for secure sharing, collaboration, delivery, catalog/pitching?
-
----
-
-## Tech Stack (Planned)
-
-- Supabase (database backbone, auth, structured data)
-- GitHub (version control)
-- Antigravity IDE (custom builds)
-
----
-
-## Tasks
-
-*Paused — nothing needed at the moment*
-
----
-
-## Log
-
-| Date | Entry |
-|------|-------|
-| 2026-02-04 | Project created (paused) |
-
----
-
-*Last updated: 2026-02-04*
+## Features
+*   **Catalog Management:** Source of truth for all songs (Splits, Metadata, Files).
+*   **Contact CRM:** Tiers A/B/C. Cadence tracking.
+*   **Analytics:** Who opened the capsule? Who listened?
+*   **Security:** Password protection for high-value drops.

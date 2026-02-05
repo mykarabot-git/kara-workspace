@@ -6,36 +6,6 @@
     "completed": 0,
     "total": 6
   },
-  "nexus": {
-    "catalog": [
-      {
-        "id": "S001",
-        "title": "Midnight Drive",
-        "artist": "Sleep Deez",
-        "status": "Mastered",
-        "bpm": 120,
-        "key": "Cm",
-        "splits": true,
-        "metadata": true,
-        "pitchReady": true
-      },
-      {
-        "id": "S002",
-        "title": "Neon Lights",
-        "artist": "Pending",
-        "status": "Demo",
-        "bpm": 95,
-        "key": "G",
-        "splits": false,
-        "metadata": false,
-        "pitchReady": false
-      }
-    ],
-    "contacts": [
-      { "name": "Sarah Label", "tier": "A", "email": "sarah@label.com", "lastPitch": "2026-01-15" },
-      { "name": "Mike Sync", "tier": "B", "email": "mike@netflix.com", "lastPitch": "2025-12-20" }
-    ]
-  },
   "projects": [
     {
       "id": "tech-tips",
