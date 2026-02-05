@@ -137,8 +137,29 @@
     </div>
   </div>
 
-  <!-- Toast Notification -->
-  <div class="toast" id="toast"></div>
+  <!-- Project Detail Modal -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Project Name</h2>
+        <button class="close-btn" id="close-modal">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>📌 Tasks</h3>
+          <div id="modal-tasks" class="task-list"></div>
+        </div>
+        <div class="modal-section">
+          <h3>💡 Ideas</h3>
+          <ul id="modal-ideas" class="idea-list"></ul>
+        </div>
+        <div class="modal-section">
+          <h3>📜 History</h3>
+          <div id="modal-history" class="history-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

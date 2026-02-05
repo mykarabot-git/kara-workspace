@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "skills": {
+    "postiz": {
+      "version": "1.0.0",
+      "installedAt": 1770315178123
+    },
+    "notion-cli": {
+      "version": "0.0.1",
+      "installedAt": 1770315179778
+    },
+    "remotion-video-toolkit": {
+      "version": "1.4.0",
+      "installedAt": 1770317302955
+    },
+    "social-card-gen": {
+      "version": "1.0.2",
+      "installedAt": 1770317304576
+    }
+  }
+}
