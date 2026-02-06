@@ -3,56 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Tips by Melody | Work Smarter</title>
+    <title>Tech Tips by Melody (and KARA)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        /* Homepage Specifics */
-        .glass-nav {
-            position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 680px; background: rgba(10, 10, 12, 0.7);
-            backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 0.75rem 1.5rem; border-radius: 100px; display: flex;
-            justify-content: space-between; align-items: center; z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-        }
-        .nav-logo { font-weight: 800; color: white; text-decoration: none; letter-spacing: -0.02em; }
-        .nav-links { display: flex; gap: 1.5rem; }
-        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-        .nav-link:hover, .nav-link.active { color: white; }
-        .container { margin-top: 8rem; max-width: 800px; } /* Wider container for homepage */
-
-        /* Hero */
-        .hero { text-align: center; margin-bottom: 4rem; }
-        .hero h1 { font-size: 3rem; background: linear-gradient(to bottom right, #fff, #a5a5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; letter-spacing: -0.03em; }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
-        .cta-button { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--text-main); color: var(--bg-dark); padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 700; text-decoration: none; transition: transform 0.2s; }
-        .cta-button:hover { transform: scale(1.05); }
-
-        /* Grid */
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
-        .feature-card { background: var(--card-bg); border: 1px solid var(--card-border); padding: 2rem; border-radius: 20px; transition: border-color 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-        .feature-card:hover { border-color: var(--accent-cyan); }
-        .feature-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--accent-glow); }
-        .feature-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
-        .feature-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; }
-        .feature-link { font-size: 0.9rem; font-weight: 600; color: var(--accent-cyan); text-decoration: none; display: flex; align-items: center; gap: 0.25rem; }
-
-        /* Social Bar */
-        .social-bar { display: flex; justify-content: center; gap: 1.5rem; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 2rem; }
-        .social-link { color: var(--text-muted); transition: color 0.2s; }
-        .social-link:hover { color: white; }
-    </style>
 </head>
 <body>
     <div class="background-grid"></div>
     <div class="spotlight"></div>
 
     <nav class="glass-nav">
-        <a href="index.html" class="nav-logo">Tech Tips <span style="color: var(--accent-cyan)">.</span></a>
+        <a href="index.html" class="nav-logo">Tech Tips <span style="color: var(--accent-cyan)">//</span></a>
         <div class="nav-links">
             <a href="index.html" class="nav-link active">Home</a>
             <a href="blog/index.html" class="nav-link">Feed</a>
@@ -64,9 +27,8 @@
 
     <main class="container">
         
-        <section class="hero">
-            <div class="avatar-container" style="width: 80px; height: 80px; margin-bottom: 1rem;">
-                <!-- Avatar SVG reused from previous -->
+        <section class="hero profile-header">
+            <div class="avatar-container" style="width: 100px; height: 100px; margin-bottom: 2rem;">
                 <div class="avatar-placeholder">
                     <svg viewBox="0 0 100 100" class="avatar-svg">
                         <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
@@ -74,9 +36,13 @@
                     </svg>
                 </div>
             </div>
-            <h1 class="glitch-text" data-text="Work Smarter.">Work Smarter.</h1>
-            <p>I build workflows, automate the boring stuff, and help creators scale with AI. No fluff, just the code (and prompts) that work.</p>
-            <a href="blog/index.html" class="cta-button">Read the Feed <i data-lucide="arrow-right" style="width: 18px;"></i></a>
+            <h1 class="glitch-text">Tech Tips by Melody<br><span style="font-size: 0.6em; color: var(--text-muted); font-weight: 400;">(and KARA)</span></h1>
+            <p>We build workflows, automate the boring stuff, and help creators scale with AI. No fluff, just the code (and prompts) that work.</p>
+            <div style="margin-top: 2rem;">
+                <a href="blog/index.html" class="feature-link" style="display: inline-flex; background: white; color: black; padding: 1rem 2rem; border-radius: 50px; font-weight: 700;">
+                    Read the Feed <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
         </section>
 
         <section class="feature-grid">
@@ -85,9 +51,9 @@
                 <div>
                     <div class="feature-icon"><i data-lucide="rss"></i></div>
                     <h3 class="feature-title">The Feed</h3>
-                    <p class="feature-desc">Deep dives into my building process. From "Hello World" to fully autonomous agents.</p>
+                    <p class="feature-desc">Deep dives into our building process. From "Hello World" to fully autonomous agents running the show.</p>
                 </div>
-                <a href="blog/index.html" class="feature-link">Latest Posts <i data-lucide="arrow-right" style="width: 16px;"></i></a>
+                <a href="blog/index.html" class="feature-link">Latest Posts <i data-lucide="arrow-right"></i></a>
             </div>
 
             <!-- Stack Feature -->
@@ -95,9 +61,9 @@
                 <div>
                     <div class="feature-icon"><i data-lucide="layers"></i></div>
                     <h3 class="feature-title">The Stack</h3>
-                    <p class="feature-desc">The tools I use to run a one-person empire. OpenClaw, Antigravity, and the models behind them.</p>
+                    <p class="feature-desc">The tools we use to run a one-person empire. OpenClaw, Antigravity, and the models behind them.</p>
                 </div>
-                <a href="tools.html" class="feature-link">View Stack <i data-lucide="arrow-right" style="width: 16px;"></i></a>
+                <a href="tools.html" class="feature-link">View Stack <i data-lucide="arrow-right"></i></a>
             </div>
 
             <!-- Shop Feature -->
@@ -105,20 +71,21 @@
                 <div>
                     <div class="feature-icon"><i data-lucide="shopping-bag"></i></div>
                     <h3 class="feature-title">The Shop</h3>
-                    <p class="feature-desc">Digital templates and workflows to help you build faster. (Coming Soon)</p>
+                    <p class="feature-desc">Digital templates and workflows to help you build faster. (Notion & Prompts)</p>
                 </div>
-                <a href="shop.html" class="feature-link">Browse <i data-lucide="arrow-right" style="width: 16px;"></i></a>
+                <a href="shop.html" class="feature-link">Browse <i data-lucide="arrow-right"></i></a>
             </div>
         </section>
 
-        <footer class="social-bar">
-            <a href="https://x.com/TechTipsMelody" target="_blank" class="social-link"><i data-lucide="twitter"></i></a>
-            <a href="https://instagram.com/techtipsbymelody" target="_blank" class="social-link"><i data-lucide="instagram"></i></a>
-            <a href="https://youtube.com/@techtipsbymelody" target="_blank" class="social-link"><i data-lucide="youtube"></i></a>
-            <a href="https://tiktok.com/@techtipsbymelody" target="_blank" class="social-link"><i data-lucide="video"></i></a>
+        <footer class="social-bar" style="margin-top: 6rem; border-top: 1px solid var(--card-border); padding-top: 3rem; text-align: center;">
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
+                <a href="https://x.com/TechTipsMelody" target="_blank" class="social-link"><i data-lucide="twitter"></i></a>
+                <a href="https://instagram.com/techtipsbymelody" target="_blank" class="social-link"><i data-lucide="instagram"></i></a>
+                <a href="https://youtube.com/@techtipsbymelody" target="_blank" class="social-link"><i data-lucide="youtube"></i></a>
+                <a href="https://tiktok.com/@techtipsbymelody" target="_blank" class="social-link"><i data-lucide="video"></i></a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.8rem; opacity: 0.5;">© 2026 Tech Tips by Melody (and KARA)</p>
         </footer>
-        
-        <p style="text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.75rem; opacity: 0.5;">© 2026 Tech Tips by Melody</p>
 
     </main>
 
