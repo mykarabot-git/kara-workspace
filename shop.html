@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Tech Tips by Melody</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .glass-nav {
+            position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 680px; background: rgba(10, 10, 12, 0.7);
+            backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.75rem 1.5rem; border-radius: 100px; display: flex;
+            justify-content: space-between; align-items: center; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .nav-logo { font-weight: 800; color: white; text-decoration: none; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: white; }
+        .container { margin-top: 6rem; }
+
+        .shop-cta { text-align: center; padding: 4rem 2rem; background: var(--card-bg); border-radius: 24px; border: 1px solid var(--card-border); }
+        .btn-shop { display: inline-block; background: linear-gradient(to right, #7c3aed, #22d3ee); color: white; padding: 1rem 2rem; border-radius: 50px; font-weight: 700; text-decoration: none; margin-top: 2rem; transition: opacity 0.2s; }
+        .btn-shop:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="spotlight"></div>
+
+    <nav class="glass-nav">
+        <a href="index.html" class="nav-logo">Tech Tips <span style="color: var(--accent-cyan)">.</span></a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="blog/index.html" class="nav-link">Feed</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="tools.html" class="nav-link">Stack</a>
+            <a href="shop.html" class="nav-link active">Shop</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="profile-header">
+            <h1 class="glitch-text" data-text="Magic Shop Made">Magic Shop Made</h1>
+            <p class="bio">Where tech meets magic. ✨</p>
+        </header>
+
+        <div class="shop-cta">
+            <h2 style="color: white; font-size: 2rem; margin-bottom: 1rem;">BTS Inspired. ARMY Created.</h2>
+            <p style="color: var(--text-muted);">From hoodies to accessories, find something that sparks joy.</p>
+            
+            <a href="https://magicshopmade.etsy.com" target="_blank" class="btn-shop">Visit Etsy Shop <i data-lucide="external-link" style="width: 18px; vertical-align: middle; margin-left: 8px;"></i></a>
+        </div>
+
+        <footer class="footer">
+            <p>Powered by <span class="highlight">Antigravity</span></p>
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

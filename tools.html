@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Stack | Tech Tips by Melody</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .glass-nav {
+            position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 680px; background: rgba(10, 10, 12, 0.7);
+            backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.75rem 1.5rem; border-radius: 100px; display: flex;
+            justify-content: space-between; align-items: center; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .nav-logo { font-weight: 800; color: white; text-decoration: none; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: white; }
+        .container { margin-top: 6rem; }
+
+        .tool-card { display: flex; align-items: center; gap: 1rem; background: var(--card-bg); border: 1px solid var(--card-border); padding: 1.5rem; border-radius: 16px; margin-bottom: 1rem; transition: transform 0.2s; text-decoration: none; color: white; }
+        .tool-card:hover { transform: translateY(-2px); border-color: var(--accent-cyan); }
+        .tool-icon { width: 48px; height: 48px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+    </style>
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="spotlight"></div>
+
+    <nav class="glass-nav">
+        <a href="index.html" class="nav-logo">Tech Tips <span style="color: var(--accent-cyan)">.</span></a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="blog/index.html" class="nav-link">Feed</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="tools.html" class="nav-link active">Stack</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="profile-header">
+            <h1 class="glitch-text" data-text="The Stack">The Stack</h1>
+            <p class="bio">The engine room.</p>
+        </header>
+
+        <a href="#" class="tool-card">
+            <div class="tool-icon">🦞</div>
+            <div>
+                <h3 style="font-weight: 700;">OpenClaw</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">The agent runtime. It connects models, tools, and the browser into one autonomous system.</p>
+            </div>
+        </a>
+
+        <a href="#" class="tool-card">
+            <div class="tool-icon">⚡</div>
+            <div>
+                <h3 style="font-weight: 700;">Google Antigravity</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">The IDE and cloud environment where KARA lives and builds.</p>
+            </div>
+        </a>
+
+        <a href="#" class="tool-card">
+            <div class="tool-icon">🧠</div>
+            <div>
+                <h3 style="font-weight: 700;">Claude Opus & Gemini</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">The brains. Opus for architecture, Gemini for speed and search.</p>
+            </div>
+        </a>
+
+        <footer class="footer">
+            <p>Powered by <span class="highlight">Antigravity</span></p>
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

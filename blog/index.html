@@ -10,87 +10,85 @@
     <link rel="stylesheet" href="../style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Blog Specific Overrides */
-        .container { max-width: 680px; }
-        .back-link {
-            display: inline-flex;
+        /* Shared Header/Nav Styles */
+        .glass-nav {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 680px;
+            background: rgba(10, 10, 12, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
-        .back-link:hover { color: var(--accent-cyan); }
-        .back-link i { margin-right: 0.5rem; width: 18px; }
 
-        .blog-grid {
-            display: grid;
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1rem;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
             gap: 1.5rem;
         }
 
-        .post-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--text-main);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .post-card:hover {
-            background: var(--card-hover);
-            border-color: rgba(124, 58, 237, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .post-date {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--accent-cyan);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .post-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .post-excerpt {
-            font-size: 0.9rem;
+        .nav-link {
             color: var(--text-muted);
-            line-height: 1.6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: white;
+        }
+
+        /* Adjust main container to clear fixed nav */
+        .container { 
+            max-width: 680px; 
+            margin-top: 6rem; /* Added space for nav */
         }
         
-        .read-more {
-            margin-top: 1rem;
-            display: flex;
-            align-items: center;
-            font-size: 0.8rem;
-            color: var(--text-main);
-            font-weight: 600;
-        }
-        .read-more i { width: 16px; margin-left: 5px; transition: transform 0.2s; }
-        .post-card:hover .read-more i { transform: translateX(3px); }
-
+        .back-link { display: none; } /* Hide old back link */
     </style>
 </head>
 <body>
     <div class="background-grid"></div>
     <div class="spotlight"></div>
 
+    <nav class="glass-nav">
+        <a href="index.html" class="nav-logo">Tech Tips <span style="color: var(--accent-cyan)">.</span></a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active">Feed</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="tools.html" class="nav-link">Stack</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+        </div>
+    </nav>
+
     <main class="container">
-        <a href="../index.html" class="back-link"><i data-lucide="arrow-left"></i> Home</a>
         
-        <header class="profile-header" style="margin-bottom: 2rem;">
-            <h1 class="glitch-text" data-text="The Feed">The Feed</h1>
-            <p class="bio">Insights, updates, and raw thoughts.</p>
+        <header class="profile-header" style="margin-bottom: 3rem;">
+            <h1 class="glitch-text" data-text="Tech Tips">Tech Tips</h1>
+            <p class="bio">Building the future of work, one script at a time. 🚀</p>
+            
+            <div class="social-links">
+                <a href="#" class="social-btn"><i data-lucide="instagram"></i></a>
+                <a href="#" class="social-btn"><i data-lucide="twitter"></i></a>
+                <a href="#" class="social-btn"><i data-lucide="youtube"></i></a>
+            </div>
         </header>
 
         <div class="blog-grid">

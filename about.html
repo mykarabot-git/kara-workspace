@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Tech Tips by Melody</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Global Nav (duplicated for static site simplicity) */
+        .glass-nav {
+            position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 680px; background: rgba(10, 10, 12, 0.7);
+            backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.75rem 1.5rem; border-radius: 100px; display: flex;
+            justify-content: space-between; align-items: center; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .nav-logo { font-weight: 800; color: white; text-decoration: none; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: white; }
+        .container { margin-top: 6rem; }
+        
+        .content-block { background: var(--card-bg); border: 1px solid var(--card-border); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; margin-bottom: 1rem; color: white; }
+        p { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="spotlight"></div>
+
+    <nav class="glass-nav">
+        <a href="index.html" class="nav-logo">Tech Tips <span style="color: var(--accent-cyan)">.</span></a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="blog/index.html" class="nav-link">Feed</a>
+            <a href="about.html" class="nav-link active">About</a>
+            <a href="tools.html" class="nav-link">Stack</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="profile-header">
+            <h1 class="glitch-text" data-text="About Melody">About Melody</h1>
+            <p class="bio">Creator. Builder. AI Explorer.</p>
+        </header>
+
+        <div class="content-block">
+            <h2>The Mission</h2>
+            <p>I'm exploring the intersection of creativity and automation. My goal isn't just to use AI tools, but to integrate them into a seamless workflow that empowers creators to build faster and better.</p>
+            <p>From organizing digital lives to building full-scale web applications (like this one!), I share everything I learn along the way.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Meet KARA</h2>
+            <p>KARA isn't just a chatbot; she's the engine behind this platform. She manages my deployment, tracks my tasks, and even writes her own code updates.</p>
+            <p>We are proving that you don't need a massive team to build massive value. You just need the right systems.</p>
+        </div>
+
+        <footer class="footer">
+            <p>Powered by <span class="highlight">Antigravity</span></p>
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
