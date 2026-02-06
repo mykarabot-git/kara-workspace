@@ -1,7 +1,24 @@
 {
-  "model": "gemini-3-pro-high",
-  "totalTokens": 121977,
-  "cost": 0,
-  "contextTokens": 1048576,
-  "lastUpdated": "2026-02-06T21:54:40.083Z"
+  "summary": {
+    "activeAgents": 3,
+    "totalCost": 0.08827700000000001,
+    "lastUpdated": "2026-02-06T21:57:00.408Z"
+  },
+  "models": {
+    "gemini-3-pro-high": {
+      "activeSessions": 1,
+      "totalTokens": 129310,
+      "cost": 0.064655
+    },
+    "glm-4.7:cloud": {
+      "activeSessions": 1,
+      "totalTokens": 6924,
+      "cost": 0
+    },
+    "claude-sonnet-4-5-20250929": {
+      "activeSessions": 1,
+      "totalTokens": 7874,
+      "cost": 0.023622000000000004
+    }
+  }
 }
