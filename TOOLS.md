@@ -1,47 +1,19 @@
 # TOOLS.md - Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Browser Access (CRITICAL)
+**I HAVE FULL BROWSER ACCESS.**
+- **Internal Browser**: `profile="openclaw"` (Use this for local file testing, checking docs, taking snapshots).
+- **External Relay**: `profile="chrome"` (Use this if the user asks to control their active Chrome window).
+- **Never ask if I can browse.** I can. Just do it.
 
-## Browser Access
+## AI Models
+- **Opus 4.6** (`anthropic/claude-opus-4-6`): The heavy lifter. Use for deep planning, complex schemas, and "Thinking" tasks.
+- **Sonnet 4.5** (`anthropic/claude-sonnet-4-5-20250929`): The daily driver. Fast, smart, reliable.
+- **Gemini**: Fallback and quick context.
 
-I have browser control via the `browser` tool. I can:
-- Open URLs, navigate, take snapshots
-- Click, type, interact with web pages
-- Use profile "openclaw" for the isolated browser
+## Cameras & Environment
+- (None currently paired)
 
-## What Goes Here
-
-Things like:
-
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
-
-## Examples
-
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+## Workspace
+- Root: `/home/kara/.openclaw/workspace`
+- Projects: `projects/`
