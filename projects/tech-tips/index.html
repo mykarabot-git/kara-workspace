@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Tips by Melody | Work Smarter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="spotlight"></div>
+
+    <main class="container">
+        <header class="profile-header">
+            <div class="avatar-container">
+                <div class="avatar-glow"></div>
+                <!-- CSS-Only "Tech Melody" Avatar -->
+                <div class="avatar-placeholder">
+                    <svg viewBox="0 0 100 100" class="avatar-svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Abstract "M" / Pulse Wave -->
+                        <path d="M 20 50 Q 35 20 50 50 T 80 50" stroke="url(#grad1)" stroke-width="8" fill="none" stroke-linecap="round" class="pulse-path"/>
+                        <circle cx="50" cy="50" r="45" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <h1 class="glitch-text" data-text="Tech Tips by Melody">Tech Tips by Melody</h1>
+            <p class="bio">
+                <span class="emoji">🧠</span> Work smarter, not harder.<br>
+                <span class="emoji">🚀</span> AI explainers & productivity hacks.
+            </p>
+        </header>
+
+        <nav class="links-grid">
+            <a href="https://www.tiktok.com/@techtipsbymelody" target="_blank" class="link-card tiktok">
+                <div class="icon-box"><i data-lucide="video"></i></div> <!-- Lucide doesn't have tiktok specific, usually use 'video' or custom svg. Video is fine for MVP -->
+                <div class="link-text">
+                    <span class="label">TikTok</span>
+                    <span class="sub">@techtipsbymelody</span>
+                </div>
+                <div class="arrow"><i data-lucide="arrow-up-right"></i></div>
+            </a>
+
+            <a href="https://www.instagram.com/techtipsbymelody" target="_blank" class="link-card instagram">
+                <div class="icon-box"><i data-lucide="instagram"></i></div>
+                <div class="link-text">
+                    <span class="label">Instagram</span>
+                    <span class="sub">@techtipsbymelody</span>
+                </div>
+                <div class="arrow"><i data-lucide="arrow-up-right"></i></div>
+            </a>
+
+            <a href="https://www.youtube.com/@techtipsbymelody" target="_blank" class="link-card youtube">
+                <div class="icon-box"><i data-lucide="youtube"></i></div>
+                <div class="link-text">
+                    <span class="label">YouTube</span>
+                    <span class="sub">Deep dives & Tutorials</span>
+                </div>
+                <div class="arrow"><i data-lucide="arrow-up-right"></i></div>
+            </a>
+
+            <a href="https://x.com/TechTipsMelody" target="_blank" class="link-card x-social">
+                <div class="icon-box"><i data-lucide="twitter"></i></div> <!-- Lucide 'twitter' is close enough for X for now, or use 'x' if available -->
+                <div class="link-text">
+                    <span class="label">X (Twitter)</span>
+                    <span class="sub">@TechTipsMelody</span>
+                </div>
+                <div class="arrow"><i data-lucide="arrow-up-right"></i></div>
+            </a>
+            
+            <a href="blog/index.html" class="link-card blog">
+                <div class="icon-box"><i data-lucide="rss"></i></div>
+                <div class="link-text">
+                    <span class="label">The Blog</span>
+                    <span class="sub">Insights & Updates</span>
+                </div>
+                <div class="arrow"><i data-lucide="arrow-right"></i></div>
+            </a>
+            
+             <a href="https://linktr.ee/techtipsbymelody" target="_blank" class="link-card resources">
+                <div class="icon-box"><i data-lucide="link"></i></div>
+                <div class="link-text">
+                    <span class="label">Linktree Archive</span>
+                    <span class="sub">All other links</span>
+                </div>
+                <div class="arrow"><i data-lucide="arrow-up-right"></i></div>
+            </a>
+        </nav>
+
+        <footer class="footer">
+            <p>Powered by <span class="highlight">Antigravity</span></p>
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
