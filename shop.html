@@ -22,11 +22,18 @@
         .nav-links { display: flex; gap: 1.5rem; }
         .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
         .nav-link:hover, .nav-link.active { color: white; }
-        .container { margin-top: 6rem; }
+        .container { margin-top: 8rem; max-width: 900px; }
 
-        .shop-cta { text-align: center; padding: 4rem 2rem; background: var(--card-bg); border-radius: 24px; border: 1px solid var(--card-border); }
-        .btn-shop { display: inline-block; background: linear-gradient(to right, #7c3aed, #22d3ee); color: white; padding: 1rem 2rem; border-radius: 50px; font-weight: 700; text-decoration: none; margin-top: 2rem; transition: opacity 0.2s; }
-        .btn-shop:hover { opacity: 0.9; }
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+        .product-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; transition: transform 0.3s; position: relative; }
+        .product-card:hover { transform: translateY(-4px); border-color: var(--accent-cyan); }
+        .product-image { height: 200px; background: linear-gradient(135deg, #1a1a20, #2a2a30); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 3rem; }
+        .product-details { padding: 1.5rem; }
+        .product-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-cyan); background: rgba(34, 211, 238, 0.1); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 0.5rem; }
+        .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
+        .product-price { font-weight: 600; color: white; margin-top: 1rem; display: block; }
+        .btn-buy { width: 100%; display: block; text-align: center; background: white; color: black; font-weight: 700; padding: 0.75rem; border-radius: 8px; margin-top: 1rem; text-decoration: none; transition: opacity 0.2s; }
+        .btn-buy:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
@@ -46,15 +53,46 @@
 
     <main class="container">
         <header class="profile-header">
-            <h1 class="glitch-text" data-text="Magic Shop Made">Magic Shop Made</h1>
-            <p class="bio">Where tech meets magic. ✨</p>
+            <h1 class="glitch-text" data-text="The Shop">The Shop</h1>
+            <p class="bio">Workflows & templates to speed you up.</p>
         </header>
 
-        <div class="shop-cta">
-            <h2 style="color: white; font-size: 2rem; margin-bottom: 1rem;">BTS Inspired. ARMY Created.</h2>
-            <p style="color: var(--text-muted);">From hoodies to accessories, find something that sparks joy.</p>
-            
-            <a href="https://magicshopmade.etsy.com" target="_blank" class="btn-shop">Visit Etsy Shop <i data-lucide="external-link" style="width: 18px; vertical-align: middle; margin-left: 8px;"></i></a>
+        <div class="shop-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">📓</div>
+                <div class="product-details">
+                    <span class="product-tag">NOTION</span>
+                    <h3 class="product-title">The "Second Brain" OS</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Organize projects, tasks, and notes in one unified dashboard.</p>
+                    <span class="product-price">$19.00</span>
+                    <a href="#" class="btn-buy">Get Template</a>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">🤖</div>
+                <div class="product-details">
+                    <span class="product-tag">AI PROMPTS</span>
+                    <h3 class="product-title">Agent Prompt Pack</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">The exact system prompts I use for KARA, coding assistants, and research bots.</p>
+                    <span class="product-price">$9.00</span>
+                    <a href="#" class="btn-buy">Download</a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">🎨</div>
+                <div class="product-details">
+                    <span class="product-tag">ASSETS</span>
+                    <h3 class="product-title">Cyber-Glass UI Kit</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">CSS snippets and design tokens for the glassmorphism look.</p>
+                    <span class="product-price">Free</span>
+                    <a href="#" class="btn-buy">Clone Repo</a>
+                </div>
+            </div>
         </div>
 
         <footer class="footer">
