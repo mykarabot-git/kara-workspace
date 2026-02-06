@@ -1,201 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KARA Dashboard | Melody's Projects</title>
-  <meta name="description" content="Project command center for Melody - powered by KARA">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2.1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARA Command | Dreamwav OS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0a0a0c',
+                        card: 'rgba(255, 255, 255, 0.03)',
+                        border: 'rgba(255, 255, 255, 0.08)',
+                        accent: '#7c3aed',
+                        cyan: '#22d3ee'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0c; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow-text { text-shadow: 0 0 20px rgba(124, 58, 237, 0.5); }
+    </style>
 </head>
-<body>
-  <div class="app-layout">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <span class="logo-icon">🚀</span>
-        <span class="logo-text">KARA</span>
-      </div>
-      
-      <nav class="sidebar-nav">
-        <button class="nav-item active" data-view="projects">
-          <span class="nav-icon">⚡</span>
-          <span>Projects</span>
-        </button>
-        <button class="nav-item" data-view="content">
-          <span class="nav-icon">🎨</span>
-          <span>Content Gallery</span>
-        </button>
-        <button class="nav-item" data-view="social">
-          <span class="nav-icon">📱</span>
-          <span>Social Queue</span>
-        </button>
-        <button class="nav-item" data-view="ideas">
-          <span class="nav-icon">💡</span>
-          <span>Ideas Lab</span>
-        </button>
-        <button class="nav-item" data-view="system">
-          <span class="nav-icon">🖥️</span>
-          <span>System Health</span>
-        </button>
-      </nav>
-
-      <div class="sidebar-footer">
-        <div class="status-indicator">
-          <span class="status-dot"></span>
-          <span class="status-text" id="system-status">Online</span>
+<body class="p-8 min-h-screen">
+    
+    <!-- Header -->
+    <header class="flex justify-between items-center mb-12">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-cyan flex items-center justify-center shadow-[0_0_20px_rgba(124,58,237,0.3)]">
+                <i data-lucide="cpu" class="text-white w-6 h-6"></i>
+            </div>
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">KARA Command</h1>
+                <p class="text-gray-500 text-sm font-mono">System Online • v1.2.0</p>
+            </div>
         </div>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="main-wrapper">
-      <!-- Header -->
-      <header>
-        <div class="header-left">
-          <h1 id="page-title">Project Command Center</h1>
-          <p class="tagline" id="page-subtitle">Melody's Operations Hub</p>
+        <div class="flex gap-4">
+            <a href="kanban.html" class="px-4 py-2 rounded-full glass flex items-center gap-2 text-sm hover:bg-white/5 transition-colors">
+                <i data-lucide="trello" class="w-4 h-4 text-cyan"></i>
+                Kanban
+            </a>
+            <div class="px-4 py-2 rounded-full glass flex items-center gap-2 text-sm text-green-400">
+                <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                Gateway Active
+            </div>
         </div>
-        <div class="header-actions">
-          <div class="search-box" id="search-container">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input type="text" id="search" placeholder="Search projects..." />
-          </div>
-          <button class="action-btn" id="refresh-btn" title="Refresh Data">
-            <span class="btn-icon">🔄</span>
-          </button>
-          <button class="action-btn" onclick="window.open('https://github.com/mykarabot-git/kara-workspace', '_blank')" title="Open GitHub">
-            <span class="btn-icon">📂</span>
-          </button>
-        </div>
-      </header>
+    </header>
 
-      <!-- Views -->
-      <main id="main-content">
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- Projects View -->
-        <div class="view active" id="view-projects">
-          <!-- Stats Bar -->
-          <div class="stats-bar">
-            <div class="stat-card">
-              <span class="stat-value" id="active-count">-</span>
-              <span class="stat-label">Active Projects</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value" id="tasks-count">-</span>
-              <span class="stat-label">Open Tasks</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value" id="next-drop">-</span>
-              <span class="stat-label">Next Drop</span>
-            </div>
-          </div>
-
-          <div class="content-grid">
-            <!-- Projects List -->
-            <section class="projects-section">
-              <div class="section-header">
-                <h2>Active Projects</h2>
-                <div class="filter-buttons">
-                  <button class="filter-btn active" data-filter="all">All</button>
-                  <button class="filter-btn" data-filter="active">Active</button>
-                  <button class="filter-btn" data-filter="paused">Paused</button>
+        <!-- Project Status -->
+        <div class="col-span-2 space-y-6">
+            
+            <!-- Agent Tracker (NEW) -->
+            <div class="glass p-6 rounded-2xl border border-purple-500/30">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold flex items-center gap-2">
+                        <i data-lucide="bot" class="text-purple-400"></i> Active Agents
+                    </h2>
+                    <span class="px-2 py-1 bg-purple-500/10 text-purple-400 text-xs rounded border border-purple-500/20 font-mono">Live</span>
                 </div>
-              </div>
-              <div class="projects-grid" id="projects-grid">
-                <!-- Loaded dynamically -->
-              </div>
-            </section>
+                
+                <!-- Agent List -->
+                <div class="space-y-3">
+                    <!-- Main Agent (Me) -->
+                    <div class="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                            <div>
+                                <div class="font-bold text-sm">KARA (Main)</div>
+                                <div class="text-xs text-gray-400">Updating Dashboard & System Health</div>
+                            </div>
+                        </div>
+                        <div class="text-xs font-mono text-gray-500">claude-opus-4-5</div>
+                    </div>
 
-            <!-- Activity Feed (Side) -->
-            <aside class="activity-sidebar">
-              <h2 class="section-title">Recent Activity</h2>
-              <div class="activity-feed" id="activity-feed">
-                <!-- Loaded dynamically -->
-              </div>
-            </aside>
-          </div>
+                    <!-- Placeholder for Sub-Agents (Dynamic) -->
+                    <div class="p-4 text-center text-sm text-gray-600 border border-dashed border-gray-800 rounded-lg">
+                        No sub-agents currently deployed.
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-xl font-semibold flex items-center gap-2">
+                <i data-lucide="folder-open" class="text-accent"></i> Active Projects
+            </h2>
+
+            <!-- NEXUS Card -->
+            <div class="glass p-6 rounded-2xl relative overflow-hidden group hover:border-yellow-500/50 transition-colors">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <i data-lucide="layers" class="w-32 h-32"></i>
+                </div>
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold">Dreamwav NEXUS</h3>
+                            <p class="text-gray-400">Operating System</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-mono border border-yellow-500/20">PAUSED</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Awaiting architectural review. Researching competitors in background.</p>
+                </div>
+            </div>
+
+
+            <!-- Social / Drops Card -->
+            <div class="grid grid-cols-2 gap-6">
+                <!-- Next Drop -->
+                <div class="glass p-6 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i data-lucide="timer" class="w-24 h-24"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Next Drop</h3>
+                    <p class="text-gray-400 text-xs mb-4">BTS "ARIRANG" Comeback</p>
+                    <div class="text-3xl font-mono font-bold text-accent">42<span class="text-sm text-gray-500 ml-1">Days</span></div>
+                    <div class="text-sm text-gray-500 mt-1">March 20, 2026</div>
+                </div>
+
+                <!-- Social Stats -->
+                <div class="glass p-6 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i data-lucide="share-2" class="w-24 h-24"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-4">Social Pulse</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="flex items-center gap-2"><i data-lucide="youtube" class="w-4 h-4 text-red-500"></i> YouTube</span>
+                            <span class="font-mono">1.2K</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="flex items-center gap-2"><i data-lucide="instagram" class="w-4 h-4 text-pink-500"></i> Insta</span>
+                            <span class="font-mono">850</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="flex items-center gap-2"><i data-lucide="video" class="w-4 h-4 text-cyan"></i> TikTok</span>
+                            <span class="font-mono">3.4K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Tips Card -->
+            <div class="glass p-6 rounded-2xl relative overflow-hidden group hover:border-cyan/50 transition-colors">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <i data-lucide="monitor" class="w-32 h-32"></i>
+                </div>
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold">Tech Tips by Melody</h3>
+                            <p class="text-gray-400">Content Hub</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-xs font-mono border border-green-500/20">Live (Local)</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="../projects/tech-tips/index.html" target="_blank" class="px-4 py-2 bg-cyan/10 hover:bg-cyan/20 text-cyan rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                            <i data-lucide="external-link" class="w-4 h-4"></i> Open Site
+                        </a>
+                        <a href="../projects/tech-tips/blog/index.html" target="_blank" class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                            <i data-lucide="pen-tool" class="w-4 h-4"></i> View Blog
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Content View -->
-        <div class="view" id="view-content">
-          <div class="content-grid" style="grid-template-columns: 1fr;">
-            <section class="projects-section">
-              <div class="section-header"><h2>Generated Content</h2></div>
-              <div class="projects-grid" id="content-grid">
-                <!-- Loaded dynamically -->
-              </div>
-            </section>
-          </div>
+        <!-- Tools / Actions -->
+        <div class="space-y-6">
+            <h2 class="text-xl font-semibold flex items-center gap-2">
+                <i data-lucide="zap" class="text-cyan"></i> Quick Actions
+            </h2>
+
+            <!-- TikTok Generator -->
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="text-lg font-bold mb-2">TikTok Idea Gen</h3>
+                <p class="text-gray-400 text-sm mb-4">Generate hooks based on current tech trends.</p>
+                <button class="w-full py-2 bg-gradient-to-r from-accent to-cyan rounded-lg font-bold hover:opacity-90 transition-opacity">
+                    Generate Ideas
+                </button>
+            </div>
+            
+            <!-- Morning Brief -->
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="text-lg font-bold mb-2">Morning Brief</h3>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between border-b border-border pb-2">
+                        <span class="text-gray-400">Weather</span>
+                        <span>🌧️ 45°F (Van, WA)</span>
+                    </div>
+                    <div class="flex justify-between border-b border-border pb-2">
+                        <span class="text-gray-400">BTS Tour</span>
+                        <span class="text-green-400">79 Shows</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Nexus</span>
+                        <span class="text-yellow-400">Architecting...</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Social View -->
-        <div class="view" id="view-social">
-          <div class="empty-state">
-            <span class="empty-icon">📱</span>
-            <h3>Social Dashboard</h3>
-            <p>Postiz integration coming soon...</p>
-          </div>
-        </div>
-
-        <!-- Ideas Lab View -->
-        <div class="view" id="view-ideas">
-          <div class="content-grid" style="grid-template-columns: 1fr;">
-            <section class="projects-section">
-              <div class="section-header">
-                <h2>Potential Ventures & Expansions</h2>
-                <button class="filter-btn active" id="add-idea-btn">+ New Idea</button>
-              </div>
-              <div class="projects-grid" id="ideas-grid">
-                <!-- Loaded dynamically -->
-              </div>
-            </section>
-          </div>
-        </div>
-
-        <!-- System View -->
-        <div class="view" id="view-system">
-          <div class="empty-state">
-            <span class="empty-icon">🖥️</span>
-            <h3>System Health</h3>
-            <p>Real-time metrics loading...</p>
-          </div>
-        </div>
-
-      </main>
     </div>
-  </div>
 
-  <!-- Project Detail Modal -->
-  <div class="modal-overlay" id="project-modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modal-title">Project Name</h2>
-        <button class="close-btn" id="close-modal">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-section">
-          <h3>📌 Tasks</h3>
-          <div id="modal-tasks" class="task-list"></div>
-        </div>
-        <div class="modal-section">
-          <h3>💡 Ideas</h3>
-          <ul id="modal-ideas" class="idea-list"></ul>
-        </div>
-        <div class="modal-section">
-          <h3>📜 History</h3>
-          <div id="modal-history" class="history-list"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
