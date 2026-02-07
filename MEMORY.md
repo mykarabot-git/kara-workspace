@@ -4,7 +4,7 @@
 
 ---
 
-## 2026-02-07 — Cron Fix & Shift Output Dashboard
+## 2026-02-07 — Complete Auth System & Dashboard Security
 
 **Infrastructure Fixes:**
 - **Cron jobs not executing** - Root cause: Missing heartbeat interval
@@ -12,12 +12,38 @@
 - **Jobs now active:** Shift 1 (11:30 PM), Shift 2 (4:00 AM), Morning Brief (8:00 AM)
 - **Default model changed:** Now using Kimi K2.5 Cloud (local/ollama)
 
+**Authentication System Built & Deployed:**
+- **Supabase Auth** - Real email/password authentication (not client-side blur)
+- **Protected Routes** - All dashboard pages require valid JWT session
+- **Invite Flow** - Supabase sends email → Click link → Set password → Auto-login
+- **Token Handling** - Invite tokens embed identity (email/user ID in JWT payload)
+- **CRITICAL FIX** - Changed `const supabase` to `const _supabase` (avoids conflict with global `window.supabase`)
+- **Debug Logging** - Added console logging throughout auth flow for troubleshooting
+
+**Files:**
+- `login.html` - Supabase email/password auth
+- `set-password.html` - Handles invite tokens + password setup
+- `index.html` - Protected route with `_supabase` auth check
+- `kanban.html` - Protected route
+- `shift-output.html` - Protected route
+
 **New Dashboard Features:**
 - **Shift Output Dashboard** (`shift-output.html`) - View all autonomous work
 - **Approval Workflow** - Review → Approve → Auto-create Kanban tasks
 - **Preview System** - Click any file to preview HTML/Markdown/Code
 - **Model Usage Tracker** - Now tracks today, this month, and all-time totals
-- **DEPLOYED** to `mykarabot.info/dashboard/shift-output.html`
+- **DEPLOYED** to `https://mykarabot.info`
+
+**Multi-Brand Privacy Implemented:**
+- **Security rule:** Never mix Dreamwav/Magic Shop/Tech Tips content
+- **Sanitization:** Removed all private URLs, server paths, infrastructure details from public blog posts
+- **Censorship:** Dreamwav references blacked out (`███████`) in Kara's Logs
+- **Removed:** "Powered by Antigravity" footers from all posts
+
+**Content Published:**
+- Kara's Log #005: "Folder Chaos" (sanitized, no private details)
+- Tech Tips Post: "The Autonomous Review Pattern" (generic workflow)
+- Both deployed to mykarabot.online
 
 **SHIFT 2 Results:**
 - Digital Product: KARA Automation Playbook ($29, $16K revenue potential)
@@ -27,11 +53,22 @@
 
 **Files Created:**
 - `projects/dashboard/shift-output.html` - Shift review & approval
+- `projects/dashboard/login.html` - Supabase auth
+- `projects/dashboard/set-password.html` - Invite handling
 - `products/kara-automation-playbook.md` - Product specification
 - `scripts/smart-snapshot.js` - Web archival tool
+- `AUTH_SYSTEM_PLAN.md` - Architecture documentation
+- `.kara/session-logging-protocol.md` - Activity logging rules
+- `RESTART_HANDOFF.md` - Complete context for new sessions
 - `memory/2026-02-07.md` - Session notes
 
+**Credentials Stored:** `.kara/credentials.json` (local only, not committed)
+- Ionos SFTP credentials
+- Supabase anon key + service role key
+
 **GitHub:** All committed and pushed to mykarabot-git/kara-workspace
+
+**Status Dashboard:** https://mykarabot.info (now requires login)
 
 ---
 
