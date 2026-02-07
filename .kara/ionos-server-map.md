@@ -1,42 +1,41 @@
 # Ionos Server Map
 
-**Updated:** 2026-02-07
+**Updated:** 2026-02-07 (Fixed)
 **SFTP Access:** access-5019100086.webspace-host.com (user: a173078)
 
 ---
 
-## Domain → Folder Mapping
+## ✅ CORRECT Domain → Folder Mapping
 
-| Domain | Should Serve | Current Status | Root Folder |
-|--------|-------------|----------------|-------------|
-| `mykarabot.info` | Dashboard/Command Center | ❌ WRONG (shows Tech Tips) | `/` or `/dashboard/` |
-| `mykarabot.online` | Tech Tips Content | ✅ OK | `/techtips/` |
-| `shop.mykarabot.online` | Digital Products | ❓ Unverified | `/store/` |
+| Domain | Serves Folder | Status | Purpose |
+|--------|--------------|--------|---------|
+| `mykarabot.info` | `/dashboard/` | ✅ Ready | KARA Command Dashboard |
+| `mykarabot.online` | `/techtips/` | ✅ Ready | Tech Tips by Melody |
+| `mykarabot.org` | `/knowledge/` | ✅ Ready | Knowledge Base |
+| `shop.mykarabot.online` | `/store/` | ✅ Ready | Digital Products Shop |
 
 ---
 
 ## Folder Structure
 
 ```
-/ (SFTP Root)
-├── index.html           ← KARA Command dashboard (currently NOT served)
-├── shift-output.html    ← Shift Output page (accessible at /shift-output.html)
-├── shift-output.js      ← Shift Output functionality
-├── usage.json           ← Model usage tracking
-├── kanban.html          ← Kanban board
-├── vault.html           ← Secure vault
-├── style.css            ← Dashboard styles
-├── app.js               ← Dashboard JS
-├── api.php              ← Backend API
-├── data.json            ← Kanban data
-├── logs/                ← System logs
+/ (SFTP Root) - Keep clean, no index files here
+├── logs/
 │
-├── dashboard/           ← Old dashboard folder (404 via web)
-│   ├── .htaccess
-│   ├── index.html       ← OLD version
+├── dashboard/           ← mykarabot.info (KARA Command)
+│   ├── index.html       ← Main dashboard (NEW version with usage tracker)
+│   ├── shift-output.html ← Shift Output review page
+│   ├── shift-output.js
+│   ├── usage.json       ← Model usage data
+│   ├── kanban.html      ← Kanban board
+│   ├── vault.html       ← Secure vault
+│   ├── api.php          ← Backend API
+│   ├── app.js
+│   ├── style.css
+│   ├── data.json        ← Kanban data
 │   └── ...
 │
-├── techtips/            ← Tech Tips website (currently served for BOTH domains)
+├── techtips/            ← mykarabot.online (Tech Tips)
 │   ├── index.html       ← Tech Tips homepage
 │   ├── style.css
 │   ├── shop.html
@@ -44,59 +43,61 @@
 │   ├── tools.html
 │   └── blog/
 │
-├── store/               ← Shop placeholder
+├── store/               ← shop.mykarabot.online
+│   ├── index.html       ← Shop homepage
+│   ├── style.css
+│   └── favicon.svg
 │
-└── knowledge/           ← Knowledge base placeholder
+└── knowledge/           ← mykarabot.org
+    └── index.html       ← Knowledge base placeholder
 ```
 
 ---
 
-## The Problem
+## Deployment Rules
 
-**mykarabot.info** domain is configured to serve `/techtips/` folder instead of root (`/`).
+**NEVER put files in root (/).** Always deploy to correct subfolder:
 
-- ✅ `https://mykarabot.info/shift-output.html` works (explicit file path)
-- ❌ `https://mykarabot.info/` shows Tech Tips (wrong folder)
-- ❌ `https://mykarabot.info/dashboard/` returns 404
-
----
-
-## Fix Options
-
-### Option 1: Ionos Control Panel (RECOMMENDED)
-Change domain mapping in Ionos:
-- `mykarabot.info` → Serve from `/` (root)
-- `mykarabot.online` → Serve from `/techtips/` (keep as-is)
-
-### Option 2: Move Files to /techtips/
-If both domains must share one folder:
-- Rename `/techtips/index.html` → `/techtips/techtips-index.html`
-- Copy KARA Command dashboard to `/techtips/index.html`
-- Tech Tips site becomes accessible at `/techtips/techtips-index.html`
-
-### Option 3: Use shift-output as landing
-- Create `/shift.html` as main dashboard landing
-- Link from everywhere else
+| What You're Deploying | Destination Folder |
+|----------------------|-------------------|
+| Dashboard updates | `/dashboard/` |
+| Shift Output page | `/dashboard/` |
+| Tech Tips content | `/techtips/` |
+| Shop products | `/store/` |
+| Knowledge articles | `/knowledge/` |
 
 ---
 
-## Deployment Scripts
+## Deployment Commands
 
-When deploying dashboard updates:
 ```bash
-# Dashboard files go to ROOT /
-put index.html /
-put shift-output.html /
-put shift-output.js /
-put usage.json /
+# Dashboard files
+put index.html dashboard/
+put shift-output.html dashboard/
+put shift-output.js dashboard/
+put usage.json dashboard/
 
-# Tech Tips files go to /techtips/
-put techtips/index.html /techtips/
-put techtips/style.css /techtips/
+# Tech Tips
+put techtips/index.html techtips/
+put techtips/style.css techtips/
+
+# Shop
+put store/index.html store/
 ```
 
 ---
 
-## Credentials Location
+## Current Files (Verified 2026-02-07)
+
+| File | Location | Size | Status |
+|------|----------|------|--------|
+| index.html | /dashboard/ | 17,232 bytes | ✅ NEW dashboard |
+| index.html | /techtips/ | 5,294 bytes | ✅ Tech Tips |
+| index.html | /store/ | 5,877 bytes | ✅ Shop placeholder |
+| index.html | /knowledge/ | 884 bytes | ✅ Knowledge placeholder |
+
+---
+
+## Credentials
 - SFTP + Database: `.kara/credentials.json`
 - This map: `.kara/ionos-server-map.md`
