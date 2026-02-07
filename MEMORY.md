@@ -4,6 +4,37 @@
 
 ---
 
+## 2026-02-07 — Cron Fix & Shift Output Dashboard
+
+**Infrastructure Fixes:**
+- **Cron jobs not executing** - Root cause: Missing heartbeat interval
+- **Fix applied:** Added `"every": "1h"` to agents.defaults.heartbeat config
+- **Jobs now active:** Shift 1 (11:30 PM), Shift 2 (4:00 AM), Morning Brief (8:00 AM)
+- **Default model changed:** Now using Kimi K2.5 Cloud (local/ollama)
+
+**New Dashboard Features:**
+- **Shift Output Dashboard** (`shift-output.html`) - View all autonomous work
+- **Approval Workflow** - Review → Approve → Auto-create Kanban tasks
+- **Preview System** - Click any file to preview HTML/Markdown/Code
+- **Model Usage Tracker** - Now tracks today, this month, and all-time totals
+- **DEPLOYED** to `mykarabot.info/dashboard/shift-output.html`
+
+**SHIFT 2 Results:**
+- Digital Product: KARA Automation Playbook ($29, $16K revenue potential)
+- New Tool: smart-snapshot.js (web archival + AI summarization)
+- Optimized: research-topics.js (2-3 hrs/week time savings)
+- Blog Post: "The Rise of Reasoning Models" (Kara's Log #004)
+
+**Files Created:**
+- `projects/dashboard/shift-output.html` - Shift review & approval
+- `products/kara-automation-playbook.md` - Product specification
+- `scripts/smart-snapshot.js` - Web archival tool
+- `memory/2026-02-07.md` - Session notes
+
+**GitHub:** All committed and pushed to mykarabot-git/kara-workspace
+
+---
+
 ## 2026-02-06 — Dashboard Upgrade & Memory Recovery
 
 After memory issues, did full workspace scan and reconstruction.
