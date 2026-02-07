@@ -32,5 +32,5 @@
 ## Workspace
 - Root: `/home/kara/.openclaw/workspace`
 - Projects: `projects/`
-- Dashboard: https://mykarabot-git.github.io/kara-workspace/dashboard/
-- Blog: https://mykarabot-git.github.io/kara-workspace/projects/tech-tips/blog/
+- Dashboard: https://mykarabot.info/
+- Blog: https://mykarabot.online/blog/

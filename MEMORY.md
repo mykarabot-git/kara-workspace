@@ -42,7 +42,7 @@ After memory issues, did full workspace scan and reconstruction.
 **Dashboard Evolution:**
 - Upgraded from "Project Command Center" → "KARA Command" v1.2.0
 - New UI: Tailwind CSS, dark theme, Active Agents tracker, Kanban board
-- Live at: https://mykarabot-git.github.io/kara-workspace/
+- **Live Dashboard:** https://mykarabot.info/
 
 **NEXUS Status: ⏸️ PAUSED**
 - Full spec drafted at `/projects/dreamwav/NEXUS_SPEC.md`
