@@ -1,100 +1,87 @@
 # Ionos Server Map
 
-**Updated:** 2026-02-07 (Fixed)
+**Updated:** 2026-02-07 (FIXED - Single Source of Truth)
 **SFTP Access:** access-5019100086.webspace-host.com (user: a173078)
 
 ---
 
-## ✅ CORRECT Domain → Folder Mapping
+## Domain → Folder Mapping
 
 | Domain | Serves Folder | Status | Purpose |
 |--------|--------------|--------|---------|
-| `mykarabot.info` | `/dashboard/` | ✅ Ready | KARA Command Dashboard |
-| `mykarabot.online` | `/techtips/` | ✅ Ready | Tech Tips by Melody |
-| `mykarabot.org` | `/knowledge/` | ✅ Ready | Knowledge Base |
-| `shop.mykarabot.online` | `/store/` | ✅ Ready | Digital Products Shop |
+| `mykarabot.info` | `/dashboard/` | ✅ **FIXED** | KARA Command Dashboard |
+| `mykarabot.online` | `/techtips/` | ✅ OK | Tech Tips by Melody |
+| `mykarabot.org` | `/knowledge/` | ✅ OK | Knowledge Base |
+| `shop.mykarabot.online` | `/store/` | ✅ OK | Digital Products Shop |
 
 ---
 
-## Folder Structure
+## ⚠️ SINGLE SOURCE OF TRUTH
+
+After cleanup, dashboard has **ONE** local location:
+
+- ✅ **`/projects/dashboard/`** — Main dashboard files (v1.1.0, inline styles/JS)
+- ❌ ~~`/dashboard/`~~ — **DELETED** (was old v1.2.0 with lock screen)
+
+**NEVER create `/dashboard/` at root again.**
+
+---
+
+## Current /dashboard/ Contents (Server)
 
 ```
-/ (SFTP Root) - Keep clean, no index files here
-├── logs/
-│
-├── dashboard/           ← mykarabot.info (KARA Command)
-│   ├── index.html       ← Main dashboard (NEW version with usage tracker)
-│   ├── shift-output.html ← Shift Output review page
-│   ├── shift-output.js
-│   ├── usage.json       ← Model usage data
-│   ├── kanban.html      ← Kanban board
-│   ├── vault.html       ← Secure vault
-│   ├── api.php          ← Backend API
-│   ├── app.js
-│   ├── style.css
-│   ├── data.json        ← Kanban data
-│   └── ...
-│
-├── techtips/            ← mykarabot.online (Tech Tips)
-│   ├── index.html       ← Tech Tips homepage
-│   ├── style.css
-│   ├── shop.html
-│   ├── about.html
-│   ├── tools.html
-│   └── blog/
-│
-├── store/               ← shop.mykarabot.online
-│   ├── index.html       ← Shop homepage
-│   ├── style.css
-│   └── favicon.svg
-│
-└── knowledge/           ← mykarabot.org
-    └── index.html       ← Knowledge base placeholder
+/dashboard/
+├── .htaccess           (rewrite rules)
+├── index.html          ← Main dashboard (v1.1.0, 17,232 bytes)
+├── shift-output.html   ← Shift Output page (43,241 bytes)
+├── shift-output.js     ← Shift Output functionality (7,268 bytes)
+├── usage.json          ← Model usage data (550 bytes)
+├── kanban.html         ← Kanban board
+├── vault.html          ← Secure vault
+├── favicon.svg         
+├── data.json           ← Kanban data
+├── data.json.bak       
+├── TAG_GUIDE.md
+└── api.php             ← Backend API
 ```
 
----
-
-## Deployment Rules
-
-**NEVER put files in root (/).** Always deploy to correct subfolder:
-
-| What You're Deploying | Destination Folder |
-|----------------------|-------------------|
-| Dashboard updates | `/dashboard/` |
-| Shift Output page | `/dashboard/` |
-| Tech Tips content | `/techtips/` |
-| Shop products | `/store/` |
-| Knowledge articles | `/knowledge/` |
+**Note:** New dashboard is self-contained (inline Tailwind + JS). No separate CSS/JS files needed.
 
 ---
 
-## Deployment Commands
+## Deploying Dashboard Updates
 
 ```bash
-# Dashboard files
+# ONLY from /projects/dashboard/  
 put index.html dashboard/
 put shift-output.html dashboard/
 put shift-output.js dashboard/
 put usage.json dashboard/
-
-# Tech Tips
-put techtips/index.html techtips/
-put techtips/style.css techtips/
-
-# Shop
-put store/index.html store/
 ```
+
+**Wrong paths (DO NOT USE):**
+- ~~`put index.html /`~~ 
+- ~~`put dashboard/index.html dashboard/`~~ (extra folder)
 
 ---
 
-## Current Files (Verified 2026-02-07)
+## Local → Server Mapping
 
-| File | Location | Size | Status |
-|------|----------|------|--------|
-| index.html | /dashboard/ | 17,232 bytes | ✅ NEW dashboard |
-| index.html | /techtips/ | 5,294 bytes | ✅ Tech Tips |
-| index.html | /store/ | 5,877 bytes | ✅ Shop placeholder |
-| index.html | /knowledge/ | 884 bytes | ✅ Knowledge placeholder |
+| Local File | Deploys To | Purpose |
+|------------|-----------|---------|
+| `/projects/dashboard/index.html` | `/dashboard/index.html` | Main dashboard |
+| `/projects/dashboard/shift-output.html` | `/dashboard/shift-output.html` | Shift work review |
+| `/projects/dashboard/shift-output.js` | `/dashboard/shift-output.js` | Shift functionality |
+| `/dashboard/usage.json` | `/dashboard/usage.json` | Usage data (generated) |
+
+---
+
+## Version History
+
+| Version | Location | Features | Status |
+|---------|----------|----------|--------|
+| v1.2.0 | ~~`/dashboard/`~~ | Lock screen, separate JS/CSS | ❌ DELETED |
+| v1.1.0 | `/projects/dashboard/` | Usage tracker, Shift Output, inline | ✅ CURRENT |
 
 ---
 
