@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shift Output Workflow | Tech Tips by Melody</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../article.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .container { max-width: 680px; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover { color: var(--accent-cyan); }
+        .back-link i { margin-right: 0.5rem; width: 18px; }
+        
+        .article-header { margin-bottom: 2rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem; }
+        .article-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); margin-bottom: 0.5rem; }
+        
+        .workflow-box {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(34, 211, 238, 0.1));
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+        }
+        .workflow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        .step-num {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-glow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+        .step-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        .step-content p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        code {
+            background: rgba(0,0,0,0.4);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            color: var(--accent-cyan);
+        }
+        .highlight-box {
+            background: rgba(34, 211, 238, 0.1);
+            border-left: 3px solid var(--accent-cyan);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="spotlight"></div>
+
+    <main class="container">
+        <a href="../index.html" class="back-link"><i data-lucide="arrow-left"></i> Back to Feed</a>
+        
+        <article>
+            <header class="article-header">
+                <div class="article-meta">2026-02-07 • WORKFLOW</div>
+                <h1 class="glitch-text" data-text="The Shift Output Workflow">The Shift Output Workflow</h1>
+            </header>
+            
+            <div class="article-content">
+                <p>Here's the problem with AI agents: they work while you sleep, but you wake up to a mess of files scattered across folders with names like <code>draft-v2-FINAL-REALLY-v3.md</code>.</p>
+
+                <p>We needed a system. A predictable pipeline where autonomous work gets created, reviewed, approved, and deployed without chaos.</p>
+
+                <h2>Introducing: Shift Output</h2>
+
+                <div class="workflow-box">
+                    <div class="workflow-step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h3>The Agent Works</h3>
+                            <p>KARA (my AI assistant) runs scheduled "shifts" — autonomous work sessions at 11:30 PM and 4:00 AM. She researches, writes code, drafts content, and builds products while I sleep.</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h3>Output Appears</h3>
+                            <p>Everything created in a shift shows up on the Shift Output dashboard: blog posts, scripts, product specs, code, research summaries. Each item has metadata — type, revenue potential, priority.</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h3>Human Review</h3>
+                            <p>I click to preview files directly in the browser. I can read blog posts, review code, scroll through research. Quick approve, or request changes if something's off.</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <h3>Auto-Deploy</h3>
+                            <p>Approved items automatically create Kanban tasks, get added to content queues, or are deployed live. No manual file copying. No "where did I put that?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>The Dashboard Features</h2>
+
+                <ul>
+                    <li><strong>File Previews</strong> — Read HTML, Markdown, and code without downloading</li>
+                    <li><strong>Revenue Tracking</strong> — See potential value of each output ($16K from last shift's Automation Playbook)</li>
+                    <li><strong>Approval Workflow</strong> — One-click approve, or reject with notes</li>
+                    <li><strong>Status Badges</strong> — Pending, Approved, In Queue, Live, Archived</li>
+                    <li><strong>Link Tracking</strong> — Generated pitch links have per-recipient tracking</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Key insight:</strong> The goal isn't to remove humans from the loop. It's to make the human's job <em>review</em>, not <em>organization</em>. AI handles creation and filing. You handle decisions.
+                </div>
+
+                <h2>Shift Types</h2>
+
+                <p>We run different shifts for different work:</p>
+
+                <ul>
+                    <li><strong>Shift 1 (11:30 PM)</strong> — Content creation: blog posts, social drafts, video scripts</li>
+                    <li><strong>Shift 2 (4:00 AM)</strong> — Product & systems: tools, automation, research</li>
+                    <li><strong>Morning Brief (8:00 AM)</strong> — Weather, calendar, BTS updates, daily prep</li>
+                </ul>
+
+                <h2>Beyond File Management</h2>
+
+                <p>This system scales. Imagine:</p>
+
+                <ul>
+                    <li>Multiple AI agents working in parallel, each with specialty shifts</li>
+                    <li>Client deliverables auto-generated and queued for your morning review</li>
+                    <li>Research reports compiled overnight, ready for your standup</li>
+                    <li>Content calendars filled and scheduled while you focus on creation</li>
+                </ul>
+
+                <p>The future of work isn't humans vs. AI. It's <strong>human direction + AI execution</strong>. The Shift Output workflow is the interface between those two worlds.</p>
+
+                <p>Build your own. Start simple: one scheduled task, one review screen, one approval button. Scale from there.</p>
+
+                <p>- Melody (and KARA, who authored this while I edited) ⚡️</p>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <p>Powered by <span class="highlight">Antigravity</span></p>
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
