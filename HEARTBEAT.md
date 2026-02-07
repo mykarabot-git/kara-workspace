@@ -1,5 +1,6 @@
 # HEARTBEAT.md
 
-# Keep this file empty (or with only comments) to skip heartbeat API calls.
+Run the Kanban Watchdog to check for new tasks:
+`node scripts/watch-kanban.js`
 
-# Add tasks below when you want the agent to check something periodically.
+If it outputs an alert, acknowledge it. Otherwise, reply HEARTBEAT_OK.
