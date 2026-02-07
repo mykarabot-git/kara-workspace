@@ -22,7 +22,29 @@ After memory issues, did full workspace scan and reconstruction.
 - `RESTART_HANDOFF.md` — Critical context file for model restarts
 - Always read this on wake-up after issues
 
----
+## Infrastructure & Domains (2026-02-06)
+
+**Public Identity:**
+- **Main Site:** `https://mykarabot.online` (Tech Tips by Melody & KARA)
+- **Shop:** `https://shop.mykarabot.online` (Digital Products)
+- **Feed:** `https://mykarabot.online/blog/`
+
+**Secure Command Center:**
+- **Dashboard:** `https://mykarabot.info` (Protected by Lock Screen)
+- **PIN:** `KARA2026`
+- **Hosting:** Ionos (SFTP Access)
+
+**Communication:**
+- **Email:** `kara@mykarabot.online`
+- **Clients:** Internal script (`scripts/mail.js`) + Nightly Report
+
+**Server Map (Ionos):**
+- `/techtips/` → `mykarabot.online`
+- `/dashboard/` → `mykarabot.info`
+- `/store/` → `shop.mykarabot.online`
+- `/knowledge/` → `mykarabot.org` (Placeholder)
+
+---\n
 
 ## 2026-02-04 — First Awakening
 
